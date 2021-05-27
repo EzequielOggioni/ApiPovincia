@@ -9,12 +9,12 @@
 # comentar una linea
 
 
-include "helper/funciones.php";
-include "helper/singleton.php";
+include "Helper/funciones.php";
+include "Helper/Singleton.php";
 
-require "entidades/IInterfaz.php";
-require "entidades/localidad.php";
-require "entidades/provincia.php";
+require "Entidades/IInterfaz.php";
+require "Entidades/Localidad.php";
+require "Entidades/Provincia.php";
 /*
 $bsas = new Provincia('Buenos Aires');
 $stafe = new Provincia('Santa Fe');

@@ -46,6 +46,11 @@ mostrarValor($sing->mostrarAlgo());
 
 return;
 */
+if ( isset($_POST['usuario'])){
+
+echo 'Ingreso correcto';
+return;
+}
 
 if ( isset($_FILES['archivo'])){
     $destino =  'uploads/'.$_FILES['archivo']['name'];
@@ -53,11 +58,6 @@ if ( isset($_FILES['archivo'])){
     return;
     } 
 
-if ( isset($_POST['usuario'])){
-
-echo 'Ingreso correcto';
-return;
-}
 
 if ( isset($_GET['imagen'])){
     $valorImagen = $_GET['imagen'];

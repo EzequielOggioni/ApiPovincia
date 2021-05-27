@@ -199,7 +199,7 @@ if ( isset($_GET['provincia'])){
     
     }else{
         
-        $listaPcias =  json_decode(leerArchivo('uploads/provincias.json'));
+        $listaPcias =  json_decode(leerArchivo('uploads/Provincias.json'));
         
         $arratProvincias = array();
         //recorro los objetos de la lista

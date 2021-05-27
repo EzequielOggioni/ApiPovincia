@@ -64,29 +64,29 @@ if ( isset($_GET['imagen'])){
     crearArchivo($valorImagen .'.txt');    
     switch ($valorImagen) {
         case '2':
-            echo "/img/MiImagen.png";
+            echo "/Img/MiImagen.png";
             break;
         case '06':
-            echo "/img/06.jpg";
+            echo "/Img/06.jpg";
             break;
         case '14':
-            echo "/img/14.png";
+            echo "/Img/14.png";
             break;
 
         case '42':
-            echo "/img/42.png";
+            echo "/Img/42.png";
             break;
         case '82':
-            echo "/img/82.png";
+            echo "/Img/82.png";
             break;
                     
         default:
-            echo "/img/404.jpg";
+            echo "/Img/404.jpg";
             break;
                     
         }
 
-    //echo "/img/MiImagen.png";
+    //echo "/Img/MiImagen.png";
     return;
 }
 

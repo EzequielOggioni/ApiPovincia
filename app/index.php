@@ -15,7 +15,7 @@ require __DIR__ . '/accesoADatos/Archivos.php';
 require __DIR__ . '/accesoADatos/AccesoDatos.php';
 require __DIR__ . '/controllers/UsuarioController.php';
 require __DIR__ . '/controllers/ProvinciaController.php';
-require __DIR__ . '/Interfaces/iinterfaz.php';
+require __DIR__ . '/Interfaces/IInterfaz.php';
 require __DIR__ . '/entidades/Usuario.php';
 require __DIR__ . '/entidades/Localidad.php';
 require __DIR__ . '/entidades/Provincia.php';

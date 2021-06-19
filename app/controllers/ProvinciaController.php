@@ -74,14 +74,14 @@ public function LeerJSONPost($request, $response, $args){
     //var_dump($ObjetoProvenienteDelFront);
 
         //recorro los valores del objeto
-        $MiUsuario = new Usuario();
+       /* $MiUsuario = new Usuario();
         foreach ($ObjetoProvenienteDelFront as $atr => $valueAtr) {
             $MiUsuario->{$atr} = $valueAtr;
         }
 
         $retorno =  $MiUsuario->CrearUsuario();
    
-        
+        */
    
 
     $response->getBody()->Write(json_encode($ObjetoProvenienteDelFront));

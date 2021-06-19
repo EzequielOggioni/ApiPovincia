@@ -54,7 +54,7 @@ $app->group('/Provincia', function (RouteCollectorProxy $group) {
     $group->post('[/]', \ProvinciaController::class . ':CrearProvincia' );
     $group->get('/Imagen/{provinciaId}[/]', \ProvinciaController::class . ':RetornarImagen' );
     $group->get('/Departamento/{provinciaId}[/]', \ProvinciaController::class . ':RetornarDepartamentos' );
-    $group->post('/HolaMundo/{param}[/]', \ProvinciaController::class . ':LeerJSONPost' );
+    $group->post('/HolaMundo/{param}[/]', \UsuarioController::class . ':LeerJSONPost' );
 });
 
 $app->run();

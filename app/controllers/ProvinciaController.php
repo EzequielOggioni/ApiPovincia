@@ -19,12 +19,10 @@ public function RetornarProvincias($request, $response, $args){
     }
     
    */
-
- // $arratProvincias = Provincia::obtenerTodos();
- //$response->getBody()->Write(json_encode($arratProvincias));
- $response->getBody()->Write("");
+  $arratProvincias = Provincia::obtenerTodos();
+ $response->getBody()->Write(json_encode($arratProvincias));
+//  $response->getBody()->Write("");
  
- var_dump('mysql:host='.getenv('ServidorMySQL').';dbname='.getenv('Database').';charset=utf8');
 
   return $response ->withHeader('Content-Type', 'application/json');;
 

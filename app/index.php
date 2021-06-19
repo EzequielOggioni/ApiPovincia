@@ -34,6 +34,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
     // $methods = $routingResults->getAllowedMethods();
     
     $response = $handler->handle($request);
+
     $requestHeaders = $request->getHeaderLine('Access-Control-Request-Headers');
 
     $response = $response->withHeader('Access-Control-Allow-Origin', '*');
@@ -46,13 +47,14 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
     return $response;
 });
 
-
-
+$app->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
 
 $app->group('/Provincia', function (RouteCollectorProxy $group) {
     $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
+    $group->post('[/]', \ProvinciaController::class . ':CrearProvincia' );
     $group->get('/Imagen/{provinciaId}[/]', \ProvinciaController::class . ':RetornarImagen' );
     $group->get('/Departamento/{provinciaId}[/]', \ProvinciaController::class . ':RetornarDepartamentos' );
+    $group->post('/HolaMundo/{param}[/]', \ProvinciaController::class . ':LeerJSONPost' );
 });
 
 $app->run();

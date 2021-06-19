@@ -39,6 +39,17 @@
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Provincia');
         }
 
+        public  function CrearUsuario()
+        {
+            $objAccesoDatos = AccesoDatos::obtenerInstancia();
+            $consulta = $objAccesoDatos->prepararConsulta("INSERT INTO `provincias`(`ID`, `Nombre`) VALUES (?,?)");
+            
+            $this->autor;
+            $consulta->execute();
+    
+            return $consulta->fetchAll(PDO::FETCH_CLASS, 'Provincia');
+        }
+
         public function __construct(){
             parent::__construct();
             $this->departamentos =  array();

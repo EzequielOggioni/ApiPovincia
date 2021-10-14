@@ -8,8 +8,7 @@
             $consulta = $objAccesoDatos->prepararConsulta("INSERT INTO `mensaje`( `emisorId`, `receptorId`, `mensaje`, `fechaHora`) VALUES (?,?,?,now())");
             $consulta->bindParam(1, $men->emisorId);
             $consulta->bindParam(2, $men->receptorId);
-            $consulta->bindParam(3, $men->mensaje);            
-            $consulta->bindParam(4, $men->fechaHora);
+            $consulta->bindParam(3, $men->mensaje);     
 
             $consulta->execute();
     

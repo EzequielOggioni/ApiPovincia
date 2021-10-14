@@ -27,8 +27,8 @@
             $objAccesoDatos = AccesoDatos::obtenerInstancia();
             
             $consulta = $objAccesoDatos->prepararConsulta("select  `id`,`emisorId`, `receptorId`, `mensaje`, `fechaHora` from  `mensaje` where (`emisorId` = :id and  `receptorId` = :usuarioId) or (`emisorId` = :usuarioId and  `receptorId` = :id) order by fechaHora desc  ");
-            $consulta->bindParam(':id', $userId);
-            $consulta->bindParam(':usuarioId', $desId);
+            $consulta->bindParam(':id', $userId, PDO::PARAM_INT);
+            $consulta->bindParam(':usuarioId', $desId, PDO::PARAM_INT);
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Usuario');
         }

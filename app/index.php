@@ -14,10 +14,13 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/accesoADatos/Archivos.php';
 require __DIR__ . '/accesoADatos/AccesoDatos.php';
 require __DIR__ . '/controllers/UsuarioController.php';
-require __DIR__ . '/controllers/ProvinciaController.php';
-require __DIR__ . '/Interfaces/IInterfaz.php';
 require __DIR__ . '/entidades/Usuario.php';
 require __DIR__ . '/entidades/UsuarioDAO.php';
+require __DIR__ . '/controllers/MensajeController.php';
+require __DIR__ . '/entidades/Mensaje.php';
+require __DIR__ . '/entidades/MensajeDAO.php';
+require __DIR__ . '/controllers/ProvinciaController.php';
+require __DIR__ . '/Interfaces/IInterfaz.php';
 require __DIR__ . '/entidades/Localidad.php';
 require __DIR__ . '/entidades/Provincia.php';
 require __DIR__ . '/entidades/Departamento.php';
@@ -55,6 +58,13 @@ $app->group('/Usuario', function (RouteCollectorProxy $group) {
     $group->post('/crear[/]', \UsuarioController::class . ':crear' );
     $group->post('/loguear[/]', \UsuarioController::class . ':loguear' );
     $group->post('/traerTodos/{id}[/]', \UsuarioController::class . ':traerTodos' );
+    
+  });
+
+  $app->group('/Usuario', function (RouteCollectorProxy $group) {
+    $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
+    $group->post('/crear/{id}/{idUsuario}[/]', \MensajeController::class . ':crear' );
+    $group->post('/traerTodos/{id}/{idUsuario}[/]', \MensajeController::class . ':traerTodos' );
     
   });
 

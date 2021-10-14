@@ -1,46 +1,30 @@
 <?php
 
-class UsuarioController{
+class MensajeController{
     
     public function crear($request, $response, $args){
 
         $ObjetoProvenienteDelFront =  json_decode($request->getBody());
+        if (md5($args["id"]) != $ObjetoProvenienteDelFront->token)
+        { 
+             $response->getBody()->Write("token inválido");
+            return $response;
+        }
+        
+        $MiMensaje = new Mensaje();
+        $MiMensaje->emisorId = $args["id"];
+        $MiMensaje->receptorId = $args["idUsuario"];
+        $MiMensaje->mensaje  =  $ObjetoProvenienteDelFront->mensaje;
+        
+        $ObjetoProvenienteDelFront =  json_decode($request->getBody());
         
     
-            //recorro los valores del objeto
-            $MiUsuario = new Usuario();
-            foreach ($ObjetoProvenienteDelFront as $atr => $valueAtr) {
-                $MiUsuario->{$atr} = $valueAtr;
-            }
-    
-        $MiUsuario= UsuarioDAO::CrearUsuario($MiUsuario);
+        $MiMensaje= MEnsajeDAO::CrearMEnsaje($MiMensaje);
 
-        $response->getBody()->Write(json_encode($MiUsuario));
+        $response->getBody()->Write(json_encode($MiMensaje));
      
         return $response;
     }
-
-public function loguear($request, $response, $args){
-
-    $ObjetoProvenienteDelFront =  json_decode($request->getBody());
-    //var_dump($ObjetoProvenienteDelFront);
-
-        //recorro los valores del objeto
-        $MiUsuario = new Usuario();
-        foreach ($ObjetoProvenienteDelFront as $atr => $valueAtr) {
-            $MiUsuario->{$atr} = $valueAtr;
-        }
-
-        $MiUsuario =   UsuarioDAO::ValidarUsuario($MiUsuario);
-
-        foreach ($MiUsuario as $usr) {
-            $usr->generarToken();
-        }
-
-    $response->getBody()->Write(json_encode($MiUsuario));
-     
-    return $response;
-}
 
     public function traerTodos($request, $response, $args){
         $ObjetoProvenienteDelFront =  json_decode($request->getBody());
@@ -50,10 +34,10 @@ public function loguear($request, $response, $args){
             return $response;
         }
         
-    $MiUsuario =   UsuarioDAO::TraerTodos($args["id"]);
+    $MiMensaje =   MensajeDAO::TraerTodos($args["id"], $args["idUsuario"]);
 
 
-    $response->getBody()->Write(json_encode($MiUsuario));
+    $response->getBody()->Write(json_encode($MiMensaje));
      
     return $response;
 }

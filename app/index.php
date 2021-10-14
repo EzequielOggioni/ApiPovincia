@@ -61,7 +61,7 @@ $app->group('/Usuario', function (RouteCollectorProxy $group) {
     
   });
 
-  $app->group('/Usuario', function (RouteCollectorProxy $group) {
+  $app->group('/Mensaje', function (RouteCollectorProxy $group) {
     $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
     $group->post('/crear/{id}/{idUsuario}[/]', \MensajeController::class . ':crear' );
     $group->post('/traerTodos/{id}/{idUsuario}[/]', \MensajeController::class . ':traerTodos' );

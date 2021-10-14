@@ -32,7 +32,7 @@
             $consulta->bindParam(3, $desId);
             $consulta->bindParam(4, $userId);
             $consulta->execute();
-            return $consulta->fetchAll(PDO::FETCH_CLASS, 'Usuario');
+            return $consulta->fetchAll(PDO::FETCH_CLASS, 'Mensaje');
         }
     }
 

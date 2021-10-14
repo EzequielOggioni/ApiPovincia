@@ -31,6 +31,17 @@
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Usuario');
         }
+
+        public static function TraerTodos(int $userId)
+        {
+
+            $objAccesoDatos = AccesoDatos::obtenerInstancia();
+            $consulta = $objAccesoDatos->prepararConsulta("select `nombre`, `apellido`, `id`, `usuario` from  `usuario` where `id` != ? ");
+            $consulta->bindParam(1, $user->usuario);
+            $consulta->bindParam(2, $user->pass);
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_CLASS, 'Usuario');
+        }
     }
 
 ?>

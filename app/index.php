@@ -54,6 +54,8 @@ $app->group('/Usuario', function (RouteCollectorProxy $group) {
     $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
     $group->post('/crear[/]', \UsuarioController::class . ':crear' );
     $group->post('/loguear[/]', \UsuarioController::class . ':loguear' );
+    $group->post('/traerTodos/{id}[/]', \UsuarioController::class . ':traerTodos' );
+    
   });
 
 $app->group('/Provincia', function (RouteCollectorProxy $group) {

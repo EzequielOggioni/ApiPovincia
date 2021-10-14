@@ -14,7 +14,7 @@ class UsuarioController{
             }
     
         $MiUsuario= UsuarioDAO::CrearUsuario($MiUsuario);
-        
+
         $response->getBody()->Write(json_encode($MiUsuario));
      
         return $response;
@@ -33,13 +33,27 @@ public function loguear($request, $response, $args){
 
         $MiUsuario =   UsuarioDAO::ValidarUsuario($MiUsuario);
 
+        foreach ($MiUsuario as $usr) {
+            $usr->generarToken();
+        }
+
+    $response->getBody()->Write(json_encode($MiUsuario));
+     
+    return $response;
+}
+
+    public function traerTodos($request, $response, $args){
+
+    $MiUsuario =   UsuarioDAO::TraerTodos($args["id"]);
+
+
     $response->getBody()->Write(json_encode($MiUsuario));
      
     return $response;
 }
 
 
-public function LeerJSONPost($request, $response, $args){
+    public function LeerJSONPost($request, $response, $args){
     // parametro que llego por el ruteo
      $valor =  $args['param'];
    
@@ -62,8 +76,8 @@ public function LeerJSONPost($request, $response, $args){
     $response->getBody()->Write(json_encode($MiUsuario));
 
     return $response;
+    }
+
 }
 
-
-}
 ?>

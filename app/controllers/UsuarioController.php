@@ -1,18 +1,40 @@
 <?php
 
 class UsuarioController{
-
-public function RetornarUsuario($request, $response, $args){
-
-    $usr=  new Usuario();
-
     
-    $usr->nombre = "Ezequiel";
-    $usr->apellido = "Oggioni";
-    $usr->pathImagen = "imagen54.jpg";
-    
-    $response->getBody()->Write(json_encode($usr) );
+    public function crear($request, $response, $args){
 
+        $ObjetoProvenienteDelFront =  json_decode($request->getBody());
+        
+    
+            //recorro los valores del objeto
+            $MiUsuario = new Usuario();
+            foreach ($ObjetoProvenienteDelFront as $atr => $valueAtr) {
+                $MiUsuario->{$atr} = $valueAtr;
+            }
+    
+        $MiUsuario= UsuarioDAO::CrearUsuario($MiUsuario);
+        
+        $response->getBody()->Write(json_encode($MiUsuario));
+     
+        return $response;
+    }
+
+public function loguear($request, $response, $args){
+
+    $ObjetoProvenienteDelFront =  json_decode($request->getBody());
+    //var_dump($ObjetoProvenienteDelFront);
+
+        //recorro los valores del objeto
+        $MiUsuario = new Usuario();
+        foreach ($ObjetoProvenienteDelFront as $atr => $valueAtr) {
+            $MiUsuario->{$atr} = $valueAtr;
+        }
+
+        $MiUsuario =   UsuarioDAO::ValidarUsuario($MiUsuario);
+
+    $response->getBody()->Write(json_encode($MiUsuario));
+     
     return $response;
 }
 

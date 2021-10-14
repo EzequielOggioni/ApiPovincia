@@ -17,6 +17,7 @@ require __DIR__ . '/controllers/UsuarioController.php';
 require __DIR__ . '/controllers/ProvinciaController.php';
 require __DIR__ . '/Interfaces/IInterfaz.php';
 require __DIR__ . '/entidades/Usuario.php';
+require __DIR__ . '/entidades/UsuarioDAO.php';
 require __DIR__ . '/entidades/Localidad.php';
 require __DIR__ . '/entidades/Provincia.php';
 require __DIR__ . '/entidades/Departamento.php';
@@ -48,6 +49,12 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
 });
 
 $app->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
+
+$app->group('/Usuario', function (RouteCollectorProxy $group) {
+    $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
+    $group->post('/crear[/]', \UsuarioController::class . ':crear' );
+    $group->post('/loguear[/]', \UsuarioController::class . ':loguear' );
+  });
 
 $app->group('/Provincia', function (RouteCollectorProxy $group) {
     $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );

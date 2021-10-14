@@ -1,6 +1,6 @@
 <?php
 
-    class Usuario{
+    class Mensaje{
         public $emisorId;
         public $receptorId;
         public $mensaje;

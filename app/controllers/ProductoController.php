@@ -1,52 +1,52 @@
 <?php
 
-class ProvinciaController{
+class ProductoController{
 
-public function RetornarProvincias($request, $response, $args){
+public function RetornarProductos($request, $response, $args){
 /*
-    $listaPcias =  json_decode(Archivos::leerArchivo('uploads/Provincias.json'));
+    $listaPcias =  json_decode(Archivos::leerArchivo('uploads/Productos.json'));
         
-    $arratProvincias = array();
+    $arratProductos = array();
     //recorro los objetos de la lista
     foreach ($listaPcias as  $objStandar) {
         //recorro los valores del objeto
-        $tempPcia = new Provincia();
+        $tempPcia = new Producto();
         foreach ($objStandar as $atr => $valueAtr) {
             $tempPcia->{$atr} = $valueAtr;
         }
-        array_push($arratProvincias,$tempPcia);
+        array_push($arratProductos,$tempPcia);
         
     }
     
    */
-  $arratProvincias = Provincia::obtenerTodos();
- $response->getBody()->Write(json_encode($arratProvincias));
+  $arratProductos = Producto::obtenerTodos();
+ $response->getBody()->Write(json_encode($arratProductos));
 //  $response->getBody()->Write("");
  
 
-  return $response ->withHeader('Content-Type', 'application/json');
+  return $response ->withHeader('Content-Type', 'application/json');;
 
 }
 
 public function RetornarDepartamentos($request, $response, $args){
     
-    $provinciaId = $args['provinciaId'];
+    $ProductoId = $args['ProductoId'];
     
-    $listaDptos =  json_decode(Archivos::leerArchivo('uploads/Dpto'.$provinciaId.'.json'));
+    $listaDptos =  json_decode(Archivos::leerArchivo('uploads/Dpto'.$ProductoId.'.json'));
         
-    $arratProvincias = array();
+    $arratProductos = array();
     //recorro los objetos de la lista
     foreach ($listaDptos as  $objStandar) {
         //recorro los valores del objeto
-        $tempPcia = new Provincia();
+        $tempPcia = new Producto();
         foreach ($objStandar as $atr => $valueAtr) {
             $tempPcia->{$atr} = $valueAtr;
         }
-        array_push($arratProvincias,$tempPcia);
+        array_push($arratProductos,$tempPcia);
         
     }
     
-  $response->getBody()->Write(json_encode($arratProvincias));
+  $response->getBody()->Write(json_encode($arratProductos));
 
   return $response;
 
@@ -91,7 +91,7 @@ public function LeerJSONPost($request, $response, $args){
 }
 
 public function RetornarImagen($request, $response, $args){
-    $valorImagen = $args['provinciaId'];
+    $valorImagen = $args['ProductoId'];
     $imagen = "";    
 
     switch ($valorImagen) {

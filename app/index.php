@@ -38,7 +38,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
     $requestHeaders = $request->getHeaderLine('Access-Control-Request-Headers');
 
     $response = $response->withHeader('Access-Control-Allow-Origin', '*');
-    $response = $response->withHeader('Access-Control-Allow-Methods', 'get,post');
+    $response = $response->withHeader('Access-Control-Allow-Methods', 'get,post,put,delete,option');
     $response = $response->withHeader('Access-Control-Allow-Headers', $requestHeaders);
 
     // Optional: Allow Ajax CORS requests with Authorization header
@@ -54,6 +54,24 @@ $app->group('/Provincia', function (RouteCollectorProxy $group) {
     $group->post('[/]', \ProvinciaController::class . ':CrearProvincia' );
     $group->get('/Imagen/{provinciaId}[/]', \ProvinciaController::class . ':RetornarImagen' );
     $group->get('/Departamento/{provinciaId}[/]', \ProvinciaController::class . ':RetornarDepartamentos' );
+    $group->post('/HolaMundo/{param}[/]', \UsuarioController::class . ':LeerJSONPost' );
+});
+
+$app->group('/Ciudad', function (RouteCollectorProxy $group) {
+    $group->get('[/]', \ProvinciaController::class . ':RetornarProvincias' );
+    $group->post('[/]', \ProvinciaController::class . ':CrearProvincia' );
+    $group->get('/Imagen/{provinciaId}[/]', \ProvinciaController::class . ':RetornarImagen' );
+    $group->get('/Departamento/{provinciaId}[/]', \ProvinciaController::class . ':RetornarDepartamentos' );
+    $group->post('/HolaMundo/{param}[/]', \UsuarioController::class . ':LeerJSONPost' );
+});
+
+
+
+$app->group('/Producto', function (RouteCollectorProxy $group) {
+    $group->get('[/]', \ProductoController::class . ':RetornarProductos' );
+    $group->post('[/]', \ProductoController::class . ':CrearProducto' );
+    $group->get('/Imagen/{ProductoId}[/]', \ProductoController::class . ':RetornarImagen' );
+    $group->get('/Departamento/{ProductoId}[/]', \ProductoController::class . ':RetornarDepartamentos' );
     $group->post('/HolaMundo/{param}[/]', \UsuarioController::class . ':LeerJSONPost' );
 });
 

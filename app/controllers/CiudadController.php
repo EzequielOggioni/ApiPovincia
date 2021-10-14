@@ -1,52 +1,52 @@
 <?php
 
-class ProvinciaController{
+class CiudadController{
 
-public function RetornarProvincias($request, $response, $args){
+public function RetornarCiudads($request, $response, $args){
 /*
-    $listaPcias =  json_decode(Archivos::leerArchivo('uploads/Provincias.json'));
+    $listaPcias =  json_decode(Archivos::leerArchivo('uploads/Ciudades.json'));
         
-    $arratProvincias = array();
+    $arratCiudads = array();
     //recorro los objetos de la lista
     foreach ($listaPcias as  $objStandar) {
         //recorro los valores del objeto
-        $tempPcia = new Provincia();
+        $tempPcia = new Ciudad();
         foreach ($objStandar as $atr => $valueAtr) {
             $tempPcia->{$atr} = $valueAtr;
         }
-        array_push($arratProvincias,$tempPcia);
+        array_push($arratCiudads,$tempPcia);
         
     }
     
    */
-  $arratProvincias = Provincia::obtenerTodos();
- $response->getBody()->Write(json_encode($arratProvincias));
+  $arratCiudads = Ciudad::obtenerTodos();
+ $response->getBody()->Write(json_encode($arratCiudads));
 //  $response->getBody()->Write("");
  
 
-  return $response ->withHeader('Content-Type', 'application/json');
+  return $response ->withHeader('Content-Type', 'application/json');;
 
 }
 
 public function RetornarDepartamentos($request, $response, $args){
     
-    $provinciaId = $args['provinciaId'];
+    $CiudadId = $args['CiudadId'];
     
-    $listaDptos =  json_decode(Archivos::leerArchivo('uploads/Dpto'.$provinciaId.'.json'));
+    $listaDptos =  json_decode(Archivos::leerArchivo('uploads/Dpto'.$CiudadId.'.json'));
         
-    $arratProvincias = array();
+    $arratCiudads = array();
     //recorro los objetos de la lista
     foreach ($listaDptos as  $objStandar) {
         //recorro los valores del objeto
-        $tempPcia = new Provincia();
+        $tempPcia = new Ciudad();
         foreach ($objStandar as $atr => $valueAtr) {
             $tempPcia->{$atr} = $valueAtr;
         }
-        array_push($arratProvincias,$tempPcia);
+        array_push($arratCiudads,$tempPcia);
         
     }
     
-  $response->getBody()->Write(json_encode($arratProvincias));
+  $response->getBody()->Write(json_encode($arratCiudads));
 
   return $response;
 
@@ -91,7 +91,7 @@ public function LeerJSONPost($request, $response, $args){
 }
 
 public function RetornarImagen($request, $response, $args){
-    $valorImagen = $args['provinciaId'];
+    $valorImagen = $args['CiudadId'];
     $imagen = "";    
 
     switch ($valorImagen) {

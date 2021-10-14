@@ -5,7 +5,7 @@
         public static function CrearUsuario(Usuario $user)
         {
             $objAccesoDatos = AccesoDatos::obtenerInstancia();
-            $consulta = $objAccesoDatos->prepararConsulta("INSERT INTO `Usuario`( `Nombre`, `apellido`, `pass`, `usuario`) VALUES (?,?,?,?)");
+            $consulta = $objAccesoDatos->prepararConsulta("INSERT INTO `usuario`( `nombre`, `apellido`, `pass`, `usuario`) VALUES (?,?,?,?)");
             $consulta->bindParam(1, $user->nombre);
             $consulta->bindParam(2, $user->apellido);
             $consulta->bindParam(3, $user->pass);            
@@ -15,7 +15,7 @@
     
             $id = $objAccesoDatos->obtenerUltimoId();
     
-            $consulta = $objAccesoDatos->prepararConsulta("select `Nombre`, `apellido`, `id`, `usuario` from  `Usuario` where `id` = ? ");
+            $consulta = $objAccesoDatos->prepararConsulta("select `nombre`, `apellido`, `id`, `usuario` from  `usuario` where `id` = ? ");
             $consulta->bindParam(1, $id);
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Usuario');
@@ -25,7 +25,7 @@
         {
 
             $objAccesoDatos = AccesoDatos::obtenerInstancia();
-            $consulta = $objAccesoDatos->prepararConsulta("select `Nombre`, `apellido`, `id`, `usuario` from  `Usuario` where `usuario` = ? and `pass` = ? ");
+            $consulta = $objAccesoDatos->prepararConsulta("select `nombre`, `apellido`, `id`, `usuario` from  `usuario` where `usuario` = ? and `pass` = ? ");
             $consulta->bindParam(1, $user->usuario);
             $consulta->bindParam(2, $user->pass);
             $consulta->execute();

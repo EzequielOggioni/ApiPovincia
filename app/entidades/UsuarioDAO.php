@@ -37,8 +37,7 @@
 
             $objAccesoDatos = AccesoDatos::obtenerInstancia();
             $consulta = $objAccesoDatos->prepararConsulta("select `nombre`, `apellido`, `id`, `usuario` from  `usuario` where `id` != ? ");
-            $consulta->bindParam(1, $user->usuario);
-            $consulta->bindParam(2, $user->pass);
+            $consulta->bindParam(1, $userId);
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Usuario');
         }

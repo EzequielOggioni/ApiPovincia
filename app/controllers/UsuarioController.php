@@ -43,7 +43,10 @@ public function loguear($request, $response, $args){
 }
 
     public function traerTodos($request, $response, $args){
-
+        $ObjetoProvenienteDelFront =  json_decode($request->getBody());
+        if (md5($args["id"]) != $ObjetoProvenienteDelFront["token"])
+        return $response;
+        
     $MiUsuario =   UsuarioDAO::TraerTodos($args["id"]);
 
 

@@ -14,7 +14,7 @@
         }
 
         public function generarToken(){
-            $this->$token =  md5($this->$id);
+            $this->token =  md5($this->id);
         }
     }
 

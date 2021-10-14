@@ -15,7 +15,7 @@
             $id = $objAccesoDatos->obtenerUltimoId();
     
             $consulta = $objAccesoDatos->prepararConsulta("select * from  `mensaje` where `id` != ? ");
-            $consulta->bindParam(1, $userId);
+            $consulta->bindParam(1, $id );
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Mensaje');
         }
